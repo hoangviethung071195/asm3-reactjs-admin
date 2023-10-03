@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { Box, Chip, Grid, Stack, Typography } from '@mui/material';
 import MainCard from '../Table/Border/MainCard';
 import { FallOutlined, RiseOutlined } from '@ant-design/icons';
+import s from './analyticEcommerce.module.scss';
 
 const AnalyticEcommerce = ({ color, title, count, percentage, isLoss, extra }) => (
   <MainCard contentSX={{ p: 2.25 }}>
@@ -24,8 +25,8 @@ const AnalyticEcommerce = ({ color, title, count, percentage, isLoss, extra }) =
               color={color}
               icon={
                 <>
-                  {!isLoss && <RiseOutlined style={{ fontSize: '0.75rem', color: 'inherit' }} />}
-                  {isLoss && <FallOutlined style={{ fontSize: '0.75rem', color: 'inherit' }} />}
+                  {!isLoss && <RiseOutlined className={s['rise-icon']} />}
+                  {isLoss && <FallOutlined className={s['rise-icon']} />}
                 </>
               }
               label={`${percentage}%`}

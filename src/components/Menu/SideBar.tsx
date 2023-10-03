@@ -46,7 +46,7 @@ export default function SideBar(props: PropsWithChildren<{
   const ctx = useContext(AuthContext);
   return (
     <DrawerSibar variant="permanent" open={open}>
-      <Box style={{ overflow: 'hidden' }}>
+      <Box overflow='hidden'>
         <Toolbar
           sx={{
             display: 'flex',
