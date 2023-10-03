@@ -1,10 +1,10 @@
 import { Box, Divider, Drawer, List, Toolbar, useMediaQuery } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { PropsWithChildren, useContext } from "react";
-import AuthContext from '../../context/AuthContext';
-import { MENU } from '../../utils/constant/Menu';
-import MenuItem from './Item/MenuItem';
+import AuthContext from '../../context/authContext';
 import { LogoutOutlined } from '@ant-design/icons';
+import { listMenu } from 'utils/constant/menu';
+import MenuItem from './item/menuItem';
 
 export const drawerWidth: number = 240;
 const DrawerSibar = styled(Drawer, { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -58,7 +58,7 @@ export default function SideBar(props: PropsWithChildren<{
         </Toolbar>
         <Divider />
         <List component="nav">
-          {MENU.map(m => (
+          {listMenu.map(m => (
             <MenuItem key={m.menuName} menuName={m.menuName} href={m.href} iconEl={m.iconEl}></MenuItem>
           ))}
           <Divider sx={{ my: 1 }} />

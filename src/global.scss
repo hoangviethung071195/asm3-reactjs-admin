@@ -3,6 +3,7 @@
 @import '@fontsource/roboto/500.css';
 @import '@fontsource/roboto/700.css';
 @import '~mdb-ui-kit/css/mdb.min.css';
+@import '@fancyapps/ui/dist/fancybox/fancybox.css';
 
 .p-fileupload-buttonbar {
   justify-content: center;
@@ -12,4 +13,16 @@
   button[aria-label='Upload'] {
     display: none;
   }
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.fancybox__toolbar {
+  top: 65px !important;
+}
+
+.fancybox__carousel {
+  padding-top: 65px;
 }

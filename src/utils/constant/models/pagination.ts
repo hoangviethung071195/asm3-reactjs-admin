@@ -1,5 +1,5 @@
 import { PagingData, pagingEvent } from '../../../models/Pagination.model';
-import { DEFAULT_PAGINATION } from '../Pagination';
+import { default_pagination } from '../pagination';
 
 export const initialPagingData: PagingData<any> = {
   list: [],
@@ -8,5 +8,5 @@ export const initialPagingData: PagingData<any> = {
 
 export const initialPagingEvent: pagingEvent = {
   page: 1,
-  limit: DEFAULT_PAGINATION.limit
+  limit: default_pagination.limit
 };

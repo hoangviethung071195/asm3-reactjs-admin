@@ -3,9 +3,8 @@ import { IconButton, SxProps, Theme, Toolbar, Typography, useMediaQuery, useThem
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import { styled } from '@mui/material/styles';
 import { PropsWithChildren } from 'react';
-import HeaderContent from './Content';
-import { drawerWidth } from 'components/Menu/SideBar';
-
+import HeaderContent from './content';
+import { drawerWidth } from 'components/sidebar/sidebar';
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;

@@ -1,5 +1,6 @@
 import { ImageList, ImageListItem } from '@mui/material';
 import Container from '@mui/material/Container';
+import ImageLoader from 'components/image-loader/ImageLoader';
 import { FileUpload, FileUploadRemoveEvent, FileUploadSelectEvent } from 'primereact/fileupload';
 import { PropsWithChildren, forwardRef, useRef, useState } from 'react';
 import { getFileUrl } from 'utils/helpers/file';
@@ -41,11 +42,7 @@ const ImageInput = forwardRef<FileUpload, { fileIds: string[]; }>((props, ref) =
         !filesLength && <ImageList cols={4}>
           {fileIds.map((id) => (
             <ImageListItem key={id}>
-              <img
-                src={getFileUrl(id)}
-                alt=''
-                loading="lazy"
-              />
+              <ImageLoader fileId={id} fileIds={fileIds} />
             </ImageListItem>
           ))}
         </ImageList>

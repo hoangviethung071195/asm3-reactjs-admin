@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { ToastContainer } from 'react-toastify';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 import { ConfirmDialog } from 'primereact/confirmdialog';
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 
@@ -17,5 +16,3 @@ root.render(
 		<ConfirmDialog />
 	</React.StrictMode>
 );
-
-reportWebVitals();

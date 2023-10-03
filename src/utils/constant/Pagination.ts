@@ -1,4 +1,4 @@
-export const DEFAULT_PAGINATION = {
+export const default_pagination = {
   page: 1,
   limit: 10,
   between: 3,

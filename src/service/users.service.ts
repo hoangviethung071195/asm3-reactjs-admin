@@ -1,7 +1,7 @@
 import { PagingData } from 'models/Pagination.model';
 import { UserModel } from '../models/User.model';
-import { PLURAL, USER_PATH } from '../utils/constant/ApiPath';
-import { RequestMethod } from '../utils/constant/RequestMethod';
+import { PLURAL, USER_PATH } from '../utils/constant/apiPath';
+import { RequestMethod } from '../utils/constant/requestMethod';
 import { requestJson } from '../utils/helpers/api';
 
 export function getUser(userId: string) {

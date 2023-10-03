@@ -7,7 +7,7 @@ import {
   Stack,
   Typography
 } from '@mui/material';
-import AuthContext from 'context/AuthContext';
+import AuthContext from 'context/authContext';
 
 function TabPanel({ children, value, index, ...other }) {
   return (

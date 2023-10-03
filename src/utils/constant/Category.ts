@@ -1,6 +1,6 @@
 import { OptionModel } from '../../models/Option.model';
 
-export const CATEGORIES: OptionModel[] = [
+export const listCategory: OptionModel[] = [
   {
     label: 'iphone',
     value: 'iphone'

@@ -1,7 +1,7 @@
 import { GithubOutlined } from '@ant-design/icons';
 import { IconButton, Link, useMediaQuery } from '@mui/material';
-import Notification from './Notification';
-import Profile from './Profile';
+import Notification from './notification';
+import Profile from './profile';
 
 const HeaderContent = () => {
   const matchesXs = useMediaQuery((theme) => (theme as any).breakpoints.down('md'));

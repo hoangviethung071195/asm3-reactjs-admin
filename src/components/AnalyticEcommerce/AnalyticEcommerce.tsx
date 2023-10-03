@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { Box, Chip, Grid, Stack, Typography } from '@mui/material';
-import MainCard from '../Table/Border/MainCard';
+import MainCard from '../Table/border/mainCard';
 import { FallOutlined, RiseOutlined } from '@ant-design/icons';
 import s from './analyticEcommerce.module.scss';
 

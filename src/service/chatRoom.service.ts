@@ -1,6 +1,6 @@
 import { RoomModel } from '../models/Room.model';
-import { CHAT_ROOM_PATH, PLURAL } from '../utils/constant/ApiPath';
-import { RequestMethod } from '../utils/constant/RequestMethod';
+import { CHAT_ROOM_PATH, PLURAL } from '../utils/constant/apiPath';
+import { RequestMethod } from '../utils/constant/requestMethod';
 import { requestJson } from '../utils/helpers/api';
 
 export async function sendMessage(body: RoomModel) {

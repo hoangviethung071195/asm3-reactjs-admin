@@ -1,7 +1,7 @@
 import { toast } from 'react-toastify';
 import { API_ENDPOINT } from '../constant/env';
 import { getCurrentUser } from './local-storage';
-import { RequestMethod } from '../constant/RequestMethod';
+import { RequestMethod } from '../constant/requestMethod';
 
 async function request<Result>(url: string, method: RequestMethod = RequestMethod.Get, body?: BodyInit): Promise<Result> {
   const { token = '' } = getCurrentUser() ? getCurrentUser() : {};

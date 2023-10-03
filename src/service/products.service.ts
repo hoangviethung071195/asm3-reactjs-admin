@@ -1,6 +1,6 @@
-import { PLURAL, PRODUCT_PATH } from '../utils/constant/ApiPath';
-import { RequestMethod } from '../utils/constant/RequestMethod';
-import { DEFAULT_PAGINATION } from '../utils/constant/Pagination';
+import { PLURAL, PRODUCT_PATH } from '../utils/constant/apiPath';
+import { RequestMethod } from '../utils/constant/requestMethod';
+import { default_pagination } from '../utils/constant/pagination';
 import { requestJson } from '../utils/helpers/api';
 import { ProductModel } from '../models/Product.model';
 import { PagingData } from '../models/Pagination.model';
@@ -9,7 +9,7 @@ export function createProduct(body: ProductModel) {
   return requestJson<ProductModel>(PRODUCT_PATH, RequestMethod.Post, body);
 }
 
-export async function getProducts(page?: number, keyword?: string, limit = DEFAULT_PAGINATION.limit) {
+export async function getProducts(page?: number, keyword?: string, limit = default_pagination.limit) {
   return requestJson<PagingData<ProductModel>>(PRODUCT_PATH + PLURAL + (page ? `?page=${page}` : '') + (limit ? `&limit=${limit}` : '') + (keyword ? `&keyword=${keyword}` : ''));
 }
 

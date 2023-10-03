@@ -1,6 +1,6 @@
 import TablePaginationMui from '@mui/material/TablePagination';
 import { PropsWithChildren, useState } from 'react';
-import s from './Pagination.module.scss';
+import s from './pagination.module.scss';
 import { pagingEvent } from 'models/Pagination.model';
 
 export default function Pagination(props: PropsWithChildren<{

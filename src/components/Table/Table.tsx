@@ -6,14 +6,15 @@ import { Button, Grid, Table, TableBody, TableCell, TableContainer, TableRow, Ty
 // third-party
 
 // project import
-import MainCard from 'components/Table/Border/MainCard';
+import MainCard from 'components/Table/border/mainCard';
 import { PagingData, pagingEvent } from 'models/Pagination.model';
 import { HeadTableModel, Sort } from 'models/Table.model';
 import { DataDisplayType } from 'utils/constant/dataDisplayType';
 import { getFileUrl } from 'utils/helpers/file';
 import { getCellData } from 'utils/helpers/table';
-import TableHead from './Head.tsx/TableHead';
-import Pagination from 'components/Pagination/Pagination';
+import TableHead from './head.tsx/tableHead';
+import Pagination from 'components/pagination/pagination';
+import ImageLoader from 'components/image-loader/ImageLoader';
 
 export default function CustomTable<T>(props: PropsWithChildren<{
   title?: string;
@@ -98,7 +99,7 @@ export default function CustomTable<T>(props: PropsWithChildren<{
                           {
                             col.dataDisplayType === DataDisplayType.ImageFileId
                             &&
-                            <img src={getFileUrl(result?.toString())} alt="" width={50} loading='lazy' />
+                            <ImageLoader fileId={result.toString()} width={50} />
                           }
                           {
                             col.actionElements?.length &&

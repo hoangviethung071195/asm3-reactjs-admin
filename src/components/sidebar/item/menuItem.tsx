@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { PropsWithChildren, createElement } from 'react';
 import { MenuModel } from '../../../models/Menu.model';
 import { ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
-import s from './MenuItem.module.scss';
+import s from './menuItem.module.scss';
 
 export default function MenuItem(props: PropsWithChildren<MenuModel>) {
   const { menuName, href = '', iconEl, onClick } = props;

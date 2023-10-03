@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
-import ImageInput from 'components/FormInput/Image/ImageInput';
+import ImageInput from 'components/formInput/image/imageInput';
 import { ProductModel } from 'models/Product.model';
 import { FileUpload } from 'primereact/fileupload';
 import { ChangeEvent, FormEvent, Fragment, useEffect, useReducer, useRef, useState } from 'react';
@@ -12,7 +12,7 @@ import { toast } from 'react-toastify';
 import { useUpdateEffect } from 'react-use';
 import { uploadFiles } from 'service/files.service';
 import { createProduct, getProduct, updateProduct } from 'service/products.service';
-import { CATEGORIES } from 'utils/constant/Category';
+import { listCategory } from 'utils/constant/category';
 import { initialProduct } from 'utils/constant/models/products';
 
 export default function NewProduct() {
@@ -150,7 +150,7 @@ export default function NewProduct() {
                   value={product.category}
                 >
                   {
-                    CATEGORIES.map(c => (
+                    listCategory.map(c => (
                       <MenuItem key={c.value} value={c.value}>{c.label}</MenuItem>
                     ))
                   }

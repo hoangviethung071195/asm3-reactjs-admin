@@ -1,14 +1,14 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import AuthenticatedRoute from './authentication/AuthenticatedRoute';
-import Customer from "./pages/Customer/Customer";
-import Home from "./pages/Home/Home";
-import Login from "./pages/Login/Login";
-import NewProduct from "./pages/New/NewProduct";
-import Products from "./pages/Products/Products";
-import Root from "./components/Root/Root";
-import Signup from "./pages/Signup/Signup";
-import Users from "./pages/Users/Users";
 import './global.scss';
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import AuthenticatedRoute from 'authentication/authenticatedRoute';
+import Root from 'components/root/root';
+import Home from 'pages/home/home';
+import Customer from 'pages/customer/customer';
+import Users from 'pages/users/users';
+import Products from 'pages/products/products';
+import NewProduct from 'pages/new/newProduct';
+import SignIn from 'pages/login/login';
+import SignUp from 'pages/signup/signup';
 
 export default function App() {
 
@@ -49,11 +49,11 @@ export default function App() {
         },
         {
           path: "login",
-          element: <Login />,
+          element: <SignIn />,
         },
         {
           path: "signup",
-          element: <Signup />,
+          element: <SignUp />,
         },
       ],
     }

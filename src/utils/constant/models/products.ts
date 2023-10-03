@@ -1,8 +1,8 @@
 import { ProductModel } from '../../../models/Product.model';
-import { CATEGORIES } from '../Category';
+import { listCategory } from '../category';
 
 export const initialProduct: ProductModel = {
-  category: CATEGORIES[0].value.toString(),
+  category: listCategory[0].value.toString(),
   description: '',
   longDescription: '',
   price: '',

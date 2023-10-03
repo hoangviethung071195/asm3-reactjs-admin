@@ -1,5 +1,5 @@
 import { UserModel } from '../models/User.model';
-import { RequestMethod } from '../utils/constant/RequestMethod';
+import { RequestMethod } from '../utils/constant/requestMethod';
 import { requestJson } from '../utils/helpers/api';
 
 export function signup(body: UserModel) {

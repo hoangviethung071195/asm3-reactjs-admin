@@ -1,7 +1,7 @@
 import { MenuModel } from '../../models/Menu.model';
 import { DashboardOutlined, ShopOutlined, UserOutlined, CustomerServiceOutlined, FileAddOutlined } from '@ant-design/icons';
 
-export const MENU: MenuModel[] = [
+export const listMenu: MenuModel[] = [
   {
     menuName: 'Dashboard',
     href: '/',
