@@ -1,6 +1,6 @@
 import { Grid } from '@mui/material';
-import CustomTable from 'components/Table/table';
-import AnalyticEcommerce from 'components/analyticEcommerce/analyticEcommerce';
+import CustomTable from 'components/Table/Table';
+import AnalyticEcommerce from 'components/analyticEcommerce/AnalyticEcommerce';
 import { PagingData } from 'models/Pagination.model';
 import { Sort } from 'models/Table.model';
 import { MouseEvent, PropsWithChildren, useEffect, useState } from "react";

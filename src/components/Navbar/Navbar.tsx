@@ -3,8 +3,8 @@ import { IconButton, SxProps, Theme, Toolbar, Typography, useMediaQuery, useThem
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import { styled } from '@mui/material/styles';
 import { PropsWithChildren } from 'react';
-import HeaderContent from './content';
-import { drawerWidth } from 'components/sidebar/sidebar';
+import Content from './Content/Content';
+import { drawerWidth } from 'components/sidebar/Sidebar';
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
@@ -76,7 +76,7 @@ export default function Navbar(props: PropsWithChildren<{ open: boolean; setOpen
         >
           Administrator
         </Typography>
-        <HeaderContent />
+        <Content />
       </Toolbar>
     </NavbarAnimation>
   );

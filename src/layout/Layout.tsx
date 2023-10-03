@@ -9,10 +9,10 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import * as React from 'react';
 import { useContext } from 'react';
 import { useLocation } from 'react-router-dom';
-import Navbar from '../components/navbar/navbar';
-import AuthContext from '../context/authContext';
+import Navbar from '../components/Navbar/Navbar';
+import AuthContext from '../context/AuthContext';
 import { grey } from '@mui/material/colors';
-import SideBar from 'components/sidebar/sidebar';
+import SideBar from 'components/sidebar/Sidebar';
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();

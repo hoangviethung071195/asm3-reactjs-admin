@@ -1,4 +1,4 @@
-import CustomTable from 'components/Table/table';
+import CustomTable from 'components/Table/Table';
 import { PagingData, pagingEvent } from 'models/Pagination.model';
 import { PropsWithChildren, useEffect, useState } from "react";
 import { initialPagingData } from 'utils/constant/models/pagination';

@@ -9,7 +9,7 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { useContext, useEffect } from "react";
 import { Link, useNavigate } from 'react-router-dom';
-import AuthContext from '../../context/authContext';
+import AuthContext from '../../context/AuthContext';
 
 export default function SignIn() {
   const navigate = useNavigate();

@@ -1,10 +1,10 @@
 import { Box, Divider, Drawer, List, Toolbar, useMediaQuery } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { PropsWithChildren, useContext } from "react";
-import AuthContext from '../../context/authContext';
+import AuthContext from '../../context/AuthContext';
 import { LogoutOutlined } from '@ant-design/icons';
 import { listMenu } from 'utils/constant/menu';
-import MenuItem from './item/menuItem';
+import MenuItem from './item/MenuItem';
 
 export const drawerWidth: number = 240;
 const DrawerSibar = styled(Drawer, { shouldForwardProp: (prop) => prop !== 'open' })(

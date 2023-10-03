@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
-import ImageInput from 'components/formInput/image/imageInput';
+import ImageInput from 'components/formInput/image/ImageInput';
 import { ProductModel } from 'models/Product.model';
 import { FileUpload } from 'primereact/fileupload';
 import { ChangeEvent, FormEvent, Fragment, useEffect, useReducer, useRef, useState } from 'react';

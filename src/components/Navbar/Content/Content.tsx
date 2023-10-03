@@ -1,13 +1,49 @@
+import { BellOutlined, GithubOutlined } from '@ant-design/icons';
+import { Badge, Box, IconButton, Link, useMediaQuery } from '@mui/material';
 import PropTypes from 'prop-types';
 import { useContext } from 'react';
 import {
   Avatar,
-  Box,
   ButtonBase,
   Stack,
   Typography
 } from '@mui/material';
-import AuthContext from 'context/authContext';
+import AuthContext from 'context/AuthContext';
+
+const HeaderContent = () => {
+  const matchesXs = useMediaQuery((theme) => (theme as any).breakpoints.down('md'));
+
+  return (
+    <>
+      <IconButton
+        component={Link}
+        href="https://github.com/hoangviethung071195"
+        target="_blank"
+        disableRipple
+        color="secondary"
+        title="Download Free Version"
+        sx={{ color: 'text.primary', bgcolor: 'grey.100', fontSize: '1rem', padding: '12px' }}
+      >
+        <GithubOutlined />
+      </IconButton>
+
+      <Box sx={{ flexShrink: 0, ml: 0.75 }}>
+        <IconButton
+          disableRipple
+          color="secondary"
+          sx={{ color: 'text.primary', bgcolor: 'grey.100', fontSize: '1rem', padding: '12px' }}
+        >
+          <Badge badgeContent={4} color="primary" >
+            <BellOutlined />
+          </Badge>
+        </IconButton>
+      </Box>
+      {!matchesXs && <Profile />}
+    </>
+  );
+};
+
+export default HeaderContent;
 
 function TabPanel({ children, value, index, ...other }) {
   return (
@@ -46,4 +82,3 @@ const Profile = () => {
   );
 };
 
-export default Profile;

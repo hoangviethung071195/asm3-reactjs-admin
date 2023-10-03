@@ -1,14 +1,14 @@
 import './global.scss';
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import AuthenticatedRoute from 'authentication/authenticatedRoute';
-import Root from 'components/root/root';
-import Home from 'pages/home/home';
-import Customer from 'pages/customer/customer';
-import Users from 'pages/users/users';
-import Products from 'pages/products/products';
-import NewProduct from 'pages/new/newProduct';
-import SignIn from 'pages/login/login';
-import SignUp from 'pages/signup/signup';
+import AuthenticatedRoute from 'authentication/AuthenticatedRoute';
+import Root from 'components/root/Root';
+import Home from 'pages/home/Home';
+import Customer from 'pages/customer/Customer';
+import Users from 'pages/users/Users';
+import Products from 'pages/products/Products';
+import NewProduct from 'pages/new/NewProduct';
+import SignIn from 'pages/login/Login';
+import SignUp from 'pages/signup/Signup';
 
 export default function App() {
 

@@ -1,5 +1,5 @@
-import Layout from '../../layout/layout';
-import { AuthContextProvider } from '../../context/authContext';
+import Layout from '../../layout/Layout';
+import { AuthContextProvider } from '../../context/AuthContext';
 import { Outlet } from 'react-router-dom';
 
 export default function Root() {

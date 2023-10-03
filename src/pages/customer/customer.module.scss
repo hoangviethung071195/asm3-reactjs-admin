@@ -1,0 +1,49 @@
+.card {
+  border-radius: 15px;
+  .list-room {
+    position: relative;
+    height: 400px;
+    overflow: auto;
+    background: linear-gradient(to bottom right, rgb(255 255 255 / 20%), rgb(166 156 255 / 20%));
+    box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
+    border-radius: 10px;
+    .item-room {
+      cursor: pointer;
+      .customer-name {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        max-width: 120px;
+      }
+      .relative-time {
+        min-width: 90px;
+      }
+    }
+  }
+  .chatbox-msg {
+    position: relative;
+    height: 400px;
+    overflow: auto;
+    .customer-avatar {
+      width: 45px;
+      height: 100%;
+    }
+
+    .employee-content {
+      background-color: #f5f6f7;
+    }
+  }
+  .employee-avatar {
+    width: 45px !important;
+    height: 100%;
+  }
+  .msg-input {
+    border: none;
+    box-sizing: none;
+    font-size: 1rem;
+    min-width: 50px;
+  }
+  .send-msg-btn {
+    cursor: pointer;
+  }
+}

@@ -1,4 +1,4 @@
-import CustomTable from 'components/Table/table';
+import CustomTable from 'components/Table/Table';
 import { ActionElementModel } from 'models/Table.model';
 import { PropsWithChildren, useCallback, useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';

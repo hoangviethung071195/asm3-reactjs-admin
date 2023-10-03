@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { Navigate, Outlet } from "react-router-dom";
-import AuthContext from "../context/authContext";
+import AuthContext from "../context/AuthContext";
 import { loadGlobalSettings } from '../service/global.service';
-import Layout from 'layout/layout';
+import Layout from 'layout/Layout';
 
 const AuthenticatedRoute = () => {
   const ctx = useContext(AuthContext);
