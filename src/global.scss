@@ -1,0 +1,15 @@
+@import '@fontsource/roboto/300.css';
+@import '@fontsource/roboto/400.css';
+@import '@fontsource/roboto/500.css';
+@import '@fontsource/roboto/700.css';
+@import '~mdb-ui-kit/css/mdb.min.css';
+
+.p-fileupload-buttonbar {
+  justify-content: center;
+  button {
+    border-radius: 50%;
+  }
+  button[aria-label='Upload'] {
+    display: none;
+  }
+}

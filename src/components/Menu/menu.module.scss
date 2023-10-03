@@ -1,0 +1,20 @@
+.expand-sidebar {
+  left: 0 !important;
+}
+
+.expand-menu-icon {
+  display: none;
+  z-index: 50;
+}
+
+@media (max-width: 767px) {
+  .expand-menu-icon {
+    display: block;
+    position: fixed;
+    left: 30px;
+    top: 28px;
+    i {
+      cursor: pointer;
+    }
+  }
+}
