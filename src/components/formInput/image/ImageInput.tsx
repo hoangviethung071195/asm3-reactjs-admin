@@ -39,10 +39,11 @@ const ImageInput = forwardRef<FileUpload, { fileIds: string[]; }>((props, ref) =
         }}
       />
       {
-        !filesLength && <ImageList cols={4}>
-          {fileIds.map((id) => (
-            <ImageListItem key={id}>
-              <ImageLoader fileId={id} fileIds={fileIds} />
+        !filesLength &&
+        <ImageList cols={4} style={{ justifyItems: 'center', marginTop: 20 }}>
+          {fileIds.map((id, i) => (
+            <ImageListItem key={i}>
+              <ImageLoader fileId={id} fileIds={fileIds} width={50} />
             </ImageListItem>
           ))}
         </ImageList>

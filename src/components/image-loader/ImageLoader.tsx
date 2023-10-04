@@ -9,7 +9,7 @@ export default function ImageLoader(props: PropsWithChildren<{
   fileIds?: string[];
   className?: string;
   containerClassName?: string;
-  width?: number
+  width?: string | number;
 }>) {
   const { fileId, fileIds, className, containerClassName, width } = props;
   const [src, setSrc] = useState(getRelativeImageSrc('loadimg.webp'));
@@ -52,7 +52,7 @@ export default function ImageLoader(props: PropsWithChildren<{
 
   return (
     <Box className={containerClassName} onClick={clickImageHandler}>
-      <img src={src} alt="" className={'pointer ' + className} width={width} />
+      <img src={src} alt="" className={'pointer ' + className} style={{ width }} />
     </Box>
   );
 }
