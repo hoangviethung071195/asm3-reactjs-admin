@@ -10,10 +10,12 @@ import { getChatRooms, sendMessage } from '../../service/chatRoom.service';
 import { API_ENDPOINT } from '../../utils/constant/env';
 import { initialRoom } from '../../utils/constant/models/room';
 import s from './customer.module.scss';
+import LoadingOverlay from 'layout/loading-overlay/LoadingOverlay';
 
 const socket = io(API_ENDPOINT, { transports: ["websocket"] });
 
 function Customer(props: PropsWithChildren) {
+  const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState('');
   const [users, setUsers] = useState<UserModel[]>([]);
   const chatboxBodyRef = useRef<HTMLDivElement>(null);
@@ -76,6 +78,7 @@ function Customer(props: PropsWithChildren) {
         scrollToBottomChatBox();
       }
       setUsers(usersRes.list);
+      setLoading(false);
     });
 
     socket.on("to_employee", (data: RoomModel) => {
@@ -119,107 +122,109 @@ function Customer(props: PropsWithChildren) {
   }
 
   return (
-    <div className="container py-5">
-      <div className={s['card'] + " card"}>
-        <div className="card-body row">
-          <ul className={s['list-room'] + " col-12 col-lg-6 mb-4 mb-md-0 py-3 list-unstyled mb-0"}>
-            {roomInfo.list?.map((room, i) => (
-              <li key={i} className={s['item-room'] + " py-2 border-bottom d-flex justify-content-between text-primary"}
-                onClick={() =>
-                  changeRoomHandler(room._id)
-                }
-              >
-                <div className="d-flex">
-                  <div>
-                    <img
-                      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
-                      alt="avatar" className="d-flex align-self-center me-3" width="45" />
-                    <span className="badge bg-success badge-dot"></span>
+    <LoadingOverlay loading={loading}>
+      <div className="container py-5">
+        <div className={s['card'] + " card"}>
+          <div className="card-body row">
+            <ul className={s['list-room'] + " col-12 col-lg-6 mb-4 mb-md-0 py-3 list-unstyled mb-0"}>
+              {roomInfo.list?.map((room, i) => (
+                <li key={i} className={s['item-room'] + " py-2 border-bottom d-flex justify-content-between text-primary"}
+                  onClick={() =>
+                    changeRoomHandler(room._id)
+                  }
+                >
+                  <div className="d-flex">
+                    <div>
+                      <img
+                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
+                        alt="avatar" className="d-flex align-self-center me-3" width="45" />
+                      <span className="badge bg-success badge-dot"></span>
+                    </div>
+                    <div className="pt-1">
+                      <p className={s['customer-name'] + " fw-bold mb-0"}>{users.find(u => u._id === room.customerId).fullName}</p>
+                      <p className="small text-muted">{room.message.filter(m => m.isCustomer).at(-1).content}</p>
+                    </div>
                   </div>
                   <div className="pt-1">
-                    <p className={s['customer-name'] + " fw-bold mb-0"}>{users.find(u => u._id === room.customerId).fullName}</p>
-                    <p className="small text-muted">{room.message.filter(m => m.isCustomer).at(-1).content}</p>
+                    <p className={s['relative-time'] + " small text-muted mb-1 ms-2"}>
+                      {getRelativeTime(room.message.at(-1).createdAt)}
+                    </p>
+                    <span className="badge bg-danger rounded-pill float-end">{room.message.filter(m => m.isCustomer).length}</span>
                   </div>
-                </div>
-                <div className="pt-1">
-                  <p className={s['relative-time'] + " small text-muted mb-1 ms-2"}>
-                    {getRelativeTime(room.message.at(-1).createdAt)}
-                  </p>
-                  <span className="badge bg-danger rounded-pill float-end">{room.message.filter(m => m.isCustomer).length}</span>
-                </div>
-              </li>
-            ))}
-          </ul>
-          <div className="col-12 col-lg-6">
-            <div ref={chatboxBodyRef} className={s['chatbox-msg'] + " pt-3 pe-3"} data-mdb-perfect-scrollbar="true">
-              {roomInfo.room.message.map((r, i) =>
-                !r.isCustomer ? (
-                  <div key={i} className="d-flex flex-row justify-content-end">
-                    <div>
-                      <p className="small p-2 me-3 mb-1 text-white rounded-3 bg-primary"> {r.content}</p>
-                      <p className="small me-3 mb-3 rounded-3 text-muted">{getMsgTime(r.createdAt)}</p>
+                </li>
+              ))}
+            </ul>
+            <div className="col-12 col-lg-6">
+              <div ref={chatboxBodyRef} className={s['chatbox-msg'] + " pt-3 pe-3"} data-mdb-perfect-scrollbar="true">
+                {roomInfo.room.message.map((r, i) =>
+                  !r.isCustomer ? (
+                    <div key={i} className="d-flex flex-row justify-content-end">
+                      <div>
+                        <p className="small p-2 me-3 mb-1 text-white rounded-3 bg-primary"> {r.content}</p>
+                        <p className="small me-3 mb-3 rounded-3 text-muted">{getMsgTime(r.createdAt)}</p>
+                      </div>
+                      <img
+                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                        alt="avatar 1"
+                        className={s['customer-avatar']}
+                      />
                     </div>
-                    <img
-                      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
-                      alt="avatar 1"
-                      className={s['customer-avatar']}
-                    />
-                  </div>
-                ) : (
-                  <div key={i} className={"d-flex flex-row justify-content-start"}>
-                    <img
-                      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
-                      alt="avatar 1"
-                      className={s['employee-avatar']}
-                    />
-                    <div>
-                      <p className={s['employee-content'] + " small p-2 ms-3 mb-1 rounded-3"}>
-                        {r.content}
-                      </p>
-                      <p className="small ms-3 mb-3 rounded-3 text-muted float-end">{getMsgTime(r.createdAt)}</p>
+                  ) : (
+                    <div key={i} className={"d-flex flex-row justify-content-start"}>
+                      <img
+                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
+                        alt="avatar 1"
+                        className={s['employee-avatar']}
+                      />
+                      <div>
+                        <p className={s['employee-content'] + " small p-2 ms-3 mb-1 rounded-3"}>
+                          {r.content}
+                        </p>
+                        <p className="small ms-3 mb-3 rounded-3 text-muted float-end">{getMsgTime(r.createdAt)}</p>
+                      </div>
                     </div>
-                  </div>
-                )
-              )}
-            </div>
-            <div className="text-muted d-flex justify-content-start align-items-center pe-3 pt-3 mt-2">
-              <img
-                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
-                alt="avatar 3"
-                className={s['employee-avatar']}
-              />
-              <input
-                type="text"
-                className={s['msg-input'] + " form-control form-control-lg"}
-                id="exampleFormControlInput2"
-                placeholder="Type message"
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    const text = e.currentTarget.value.trim();
-                    postMessagehandler(text);
-                    setMessage('');
+                  )
+                )}
+              </div>
+              <div className="text-muted d-flex justify-content-start align-items-center pe-3 pt-3 mt-2">
+                <img
+                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                  alt="avatar 3"
+                  className={s['employee-avatar']}
+                />
+                <input
+                  type="text"
+                  className={s['msg-input'] + " form-control form-control-lg"}
+                  id="exampleFormControlInput2"
+                  placeholder="Type message"
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      const text = e.currentTarget.value.trim();
+                      postMessagehandler(text);
+                      setMessage('');
+                    }
+                  }}
+                  onChange={(e) => {
+                    const text = e.currentTarget.value;
+                    setMessage(text);
+                  }}
+                  value={message}
+                />
+                <div className="ms-1 text-muted"><i className="fas fa-paperclip"></i></div>
+                <div className="ms-3 text-muted"><i className="fas fa-smile"></i></div>
+                <div className={s['send-msg-btn'] + " ms-3 text-primary"}
+                  onClick={() =>
+                    postMessagehandler(message)
                   }
-                }}
-                onChange={(e) => {
-                  const text = e.currentTarget.value;
-                  setMessage(text);
-                }}
-                value={message}
-              />
-              <div className="ms-1 text-muted"><i className="fas fa-paperclip"></i></div>
-              <div className="ms-3 text-muted"><i className="fas fa-smile"></i></div>
-              <div className={s['send-msg-btn'] + " ms-3 text-primary"}
-                onClick={() =>
-                  postMessagehandler(message)
-                }
-              >
-                <i className="fas fa-paper-plane"></i>
+                >
+                  <i className="fas fa-paper-plane"></i>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </LoadingOverlay>
   );
 }
 

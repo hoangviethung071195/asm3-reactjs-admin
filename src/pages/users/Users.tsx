@@ -1,17 +1,25 @@
 import CustomTable from 'components/Table/Table';
 import { PagingData, pagingEvent } from 'models/Pagination.model';
 import { PropsWithChildren, useEffect, useState } from "react";
-import { initialPagingData } from 'utils/constant/models/pagination';
+import { initialPagingData, initialPagingEvent } from 'utils/constant/models/pagination';
 import { userColumns } from 'utils/constant/table/columns';
 import { UserModel } from '../../models/User.model';
 import { getUsers } from '../../service/users.service';
+import LoadingOverlay from 'layout/loading-overlay/LoadingOverlay';
 
 function Users(props: PropsWithChildren) {
+  const [loading, setLoading] = useState(true);
   const [users, setUsers] = useState<PagingData<UserModel>>(initialPagingData);
+  const [paging, setPaging] = useState(initialPagingEvent);
+  const { page, limit } = paging;
 
   useEffect(() => {
-    getUsers().then((res) => setUsers(res));
-  }, []);
+    setLoading(true);
+    getUsers(page, limit).then((res) => {
+      setUsers(res);
+      setLoading(false);
+    });
+  }, [paging]);
 
   // const inputEl = useRef(null);
   // function updateRole(id: string, role: number) {
@@ -31,13 +39,15 @@ function Users(props: PropsWithChildren) {
   // }
 
   function onPagingChange(e: pagingEvent) {
-    // setPaging(e);
+    setPaging(e);
   };
 
   console.log("users ", users);
 
   return (
-    <CustomTable columns={userColumns} tableData={users} onPagingChange={onPagingChange} />
+    <LoadingOverlay loading={loading}>
+      <CustomTable columns={userColumns} tableData={users} onPagingChange={onPagingChange} />
+    </LoadingOverlay>
   );
 }
 

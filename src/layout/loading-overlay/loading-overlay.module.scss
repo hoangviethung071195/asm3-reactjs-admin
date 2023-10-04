@@ -1,0 +1,22 @@
+.loadding-overlay-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(0, 0, 0, 0.7);
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.2s;
+  z-index: 1210;
+  .bouce-loader-icon {
+    margin: auto;
+    margin-top: calc(100vh / 2);
+    z-index: 10000;
+  }
+}
+
+.loaded {
+  opacity: 0;
+  visibility: hidden;
+}

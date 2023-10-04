@@ -11,7 +11,7 @@ const AuthContext = React.createContext({
 	currentUser: {} as UserModel,
 	isAuthenticated: false,
 	onLogout: () => { },
-	onLogin: (user: UserModel) => { },
+	async onLogin(user: UserModel) { return {}; },
 	onRegister: (user: UserModel) => { },
 });
 
@@ -27,8 +27,8 @@ export function AuthContextProvider(props: PropsWithChildren) {
 		setCurrentUser(cloneDeep(user));
 	}
 
-	const loginHandler = (user: UserModel) => {
-		signin(user)
+	const loginHandler = async (user: UserModel) => {
+		return signin(user)
 			.then(r => {
 				if (r) {
 					updateCurrentUserInfo({
@@ -38,6 +38,7 @@ export function AuthContextProvider(props: PropsWithChildren) {
 					navigate('/');
 					toast.success("Đăng nhập thành công!");
 				}
+				return r;
 			});
 	};
 

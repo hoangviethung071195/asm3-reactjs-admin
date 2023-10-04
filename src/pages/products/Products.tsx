@@ -9,8 +9,10 @@ import { PagingData, pagingEvent } from '../../models/Pagination.model';
 import { ProductModel } from '../../models/Product.model';
 import { deleteProduct, getProducts } from "../../service/products.service";
 import { initialPagingData, initialPagingEvent } from '../../utils/constant/models/pagination';
+import LoadingOverlay from 'layout/loading-overlay/LoadingOverlay';
 
 function Products(props: PropsWithChildren) {
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const [products, setProducts] = useState<PagingData<ProductModel>>(initialPagingData);
   const [paging, setPaging] = useState(initialPagingEvent);
@@ -19,6 +21,7 @@ function Products(props: PropsWithChildren) {
   const loadData = useCallback((keyword?: string) => {
     getProducts(page, keyword, limit).then((r) => {
       setProducts(r);
+      setLoading(false);
     });
   }, [paging]);
 
@@ -30,6 +33,7 @@ function Products(props: PropsWithChildren) {
     const isConfirm = await confirm();
     if (!isConfirm || !id) return;
 
+    setLoading(true);
     deleteProduct(id).then((r) => {
       if (r) {
         toast.success("Deleted product successfully!");
@@ -38,6 +42,7 @@ function Products(props: PropsWithChildren) {
         } else {
           loadData();
         }
+        setLoading(false);
       }
     });
   }
@@ -63,7 +68,11 @@ function Products(props: PropsWithChildren) {
 
   const productColumns = getProductColumns(actionEls);
 
-  return <CustomTable columns={productColumns} tableData={products} onPagingChange={onPagingChange} />;
+  return (
+    <LoadingOverlay loading={loading}>
+      <CustomTable columns={productColumns} tableData={products} onPagingChange={onPagingChange} />
+    </LoadingOverlay>
+  );
 }
 
 export default Products;
