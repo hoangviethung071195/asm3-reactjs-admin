@@ -118,6 +118,8 @@ export default function NewProduct() {
           }
           setLoading(false);
         });
+      } else {
+        setLoading(false);
       }
     }
   }

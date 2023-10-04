@@ -19,6 +19,7 @@ function Products(props: PropsWithChildren) {
   const { page, limit } = paging;
 
   const loadData = useCallback((keyword?: string) => {
+    setLoading(true);
     getProducts(page, keyword, limit).then((r) => {
       setProducts(r);
       setLoading(false);
@@ -42,8 +43,8 @@ function Products(props: PropsWithChildren) {
         } else {
           loadData();
         }
-        setLoading(false);
       }
+      setLoading(false);
     });
   }
 
